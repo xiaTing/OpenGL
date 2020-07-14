@@ -235,10 +235,12 @@ void DrawWireFramedBatch(GLBatch* pBatch)
      */
     
     //画黑色边框
-    glPolygonOffset(-1.0f, -1.0f);// 偏移深度，在同一位置要绘制填充和边线，会产生z冲突，所以要偏移
+    // 多边形偏移量的设置
+    glPolygonOffset(-1.0f, -1.0f);
+    // 偏移深度，在同一位置要绘制填充和边线，会产生z冲突，所以要偏移
     glEnable(GL_POLYGON_OFFSET_LINE);
     
-    // 画反锯齿，让黑边好看些
+    //开启抗锯齿，让黑边平滑一些
     glEnable(GL_LINE_SMOOTH);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -247,7 +249,7 @@ void DrawWireFramedBatch(GLBatch* pBatch)
     //通过调用glPolygonMode将多边形正面或者背面设为线框模式，实现线框渲染
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     //设置线条宽度
-    glLineWidth(2.5f);
+    glLineWidth(3.5f);
     
     /* GLShaderManager 中的Uniform 值——平面着色器
      参数1：平面着色器
@@ -427,7 +429,7 @@ int main(int argc, char *argv[]) {
       //申请一个颜色缓存区、深度缓存区、双缓存区、模板缓存区
       glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH | GLUT_STENCIL);
       //设置window 的尺寸
-      glutInitWindowSize(800, 600);
+      glutInitWindowSize(600, 600);
       //创建window的名称
       glutCreateWindow("GL_POINTS");
       //注册回调函数（改变尺寸）

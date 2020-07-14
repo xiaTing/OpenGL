@@ -57,7 +57,7 @@ void RenderScene()
     // 3.设置绘制颜色
     GLfloat vYerrow[] = {1.0f,1.0f,0.0f,1.0f};
     // 4.使用平面着色器
-     //不加光源  旋转之后不会变黑
+     //不加光源  旋转之后不会变黑 但是依然出现了问题，只是我们区分不出来,
      // shaderManager.UseStockShader(GLT_SHADER_FLAT,transformPipeline.GetModelViewProjectionMatrix(),vYerrow);
     // 添加默认光源
     shaderManager.UseStockShader(GLT_SHADER_DEFAULT_LIGHT,transformPipeline.GetModelViewMatrix(),transformPipeline.GetProjectionMatrix(),vYerrow);
@@ -157,7 +157,7 @@ int main(int argc, char* argv[])
     glutInit(&argc, argv);
     //申请缓冲区
     glutInitDisplayMode(GLUT_DOUBLE|GLUT_DEPTH|GLUT_RGBA|GLUT_STENCIL);
-    glutInitWindowSize(800, 600);
+    glutInitWindowSize(600, 600);
     glutCreateWindow("Geometry Test Program");
     //注册窗口改变函数
     glutReshapeFunc(ChangeSize);
